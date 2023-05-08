@@ -1,0 +1,19 @@
+{
+    "name": "marina/tesis",
+    "description": "Proyecto tesis con PHP, MySql",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "MVC\\" : "./",
+            "Controllers\\" : "./controllers",
+            "Model\\" : "./models"
+        }
+    },
+    "authors": [
+        {
+            "name": "Gaston Tisera",
+            "email": "gastontisera94@gmail.com"
+        }
+    ],
+    "require": {}
+}
