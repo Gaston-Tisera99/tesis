@@ -1,67 +1,35 @@
-<style>
-    .bg{
-        background-image: url(../img/portada.jpg);
-        background-position: center center;
-        background-size: cover;
-    }
+<h1 class="nombre-pagina">Bienvenidos a <span>MITO LIMPIEZAS</span></h1>
+<p class="descripcion-pagina">Inicia sesión con tus datos</p>
 
-    body{
-        background-color: #FDF5E6;
-        background: linear-gradient(to right, #FFFFFF, #FDF5E6);
-    }
-</style>
-    <div class="container w-75 bg-light mt-5 rounded shadow">
-        <div class="row align-items-stretch">
-            <div class="col bg d-none d-lg-block col-md-5 col-lg-5 col-xl-6 rounded">
+<?php
+    include_once __DIR__ . "/../templates/alertas.php";
+?>
 
-            </div>
-            <div class="col bg-white p-4 rounded-end"> 
-                <div class="col">
-                    <div class="text-end">
-                        <img src="../img/logo.jpg" width="48" alt="">  
-                    </div>
-                    <div class="text-center">
-                        <h2 class="fw-bold py-5">Bienvenidos a <span class="text-danger fw-bold">MITO LIMPIEZAS</span></h2>
-                        <p class="text-center">Inicia sesión con tus datos</p>
-                    </div>
-                    
-                </div>
-                <form action="/" class="formulario" method="POST">
-                    <div class="mb-4">
-                            <label for="email" class="form-label">Email</label>
-                            <input 
-                                type="email"
-                                id="email"
-                                placeholder="Tu Email"
-                                name="email"
-                                class="form-control"
-                            />
-                    </div>
-
-                    <div class="mb-4">
-                            <label for="password" class="form-label">Password</label>
-                            <input
-                                type="password"
-                                id="password"
-                                placeholder="Tu Password"
-                                name="password"
-                                class="form-control"
-                            />
-                    </div>
-
-                    <div class="d-grid">
-                        <button type="submit" class="btn btn-primary">Iniciar Sesion</button>
-                    </div>
-
-                    <div class="my-3">
-                        <a href="/crear-cuenta" class="d-inline me-2  text-dark">¿Aún no tienes cuenta? Crear Cuenta</a>
-                        <a href="/olvide" class="d-inline  text-dark">¿Olvidaste tu password?</a>
-                    </div>
-                </form>
-                
-            </div>
-        </div>
-        
-        
+<form action="/" class="formulario" method="POST">
+    <div class="campo">
+        <label for="email">Email</label>        
+        <input 
+            type="email"
+            id="email"
+            placeholder="Tu Email"
+            name="email"    
+            value="<?php echo s($auth->email); ?>"
+        />
     </div>
-    
+
+    <div class="campo">
+        <label for="password">Password</label>
+        <input
+            type="password"
+            id="password"
+            placeholder="Tu Password"   
+            name="password"
+        />
+    </div>
+    <input type="submit" class="boton" value="Iniciar Sesión">
+</form>
+
+<div class="acciones">
+    <a href="/crear-cuenta">¿Aún no tienes cuenta? Crear Cuenta</a>
+    <a href="/olvide">¿Olvidaste tu password?</a>
+</div>
