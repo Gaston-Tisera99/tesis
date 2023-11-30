@@ -74,7 +74,13 @@ class Router
 
         // entonces incluimos la vista en el layout
         include_once __DIR__ . "/views/$view.php";
+
         $contenido = ob_get_clean(); // Limpia el Buffer
+
+        //utilizar el layout de acuerdo a la url 
+        $currentUrl = $_SERVER['PATH_INFO'] ?? '/';
+        //debuguear($currentUrl);
+
         include_once __DIR__ . '/views/layoutTienda.php'; 
     }
 }

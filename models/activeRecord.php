@@ -68,6 +68,7 @@ class ActiveRecord {
             $atributos[$columna] = $this->$columna;
         }
         return $atributos;
+        
     }
 
     // Sanitizar los datos antes de guardarlos en la BD
@@ -100,8 +101,9 @@ class ActiveRecord {
             $resultado = $this->crear();
         }
         return $resultado;
+        
     }
-
+    
     // Todos los registros
     public static function all() {
         $query = "SELECT * FROM " . static::$tabla;
@@ -140,9 +142,11 @@ class ActiveRecord {
         $query .= " ) VALUES (' "; 
         $query .= join("', '", array_values($atributos));
         $query .= " ') ";
-
+        
         // Resultado de la consulta
+        //debuguear($query);
         $resultado = self::$db->query($query);
+    
         return [
            'resultado' =>  $resultado,
            'id' => self::$db->insert_id
@@ -178,4 +182,54 @@ class ActiveRecord {
         return $resultado;
     }
 
+    public function setImagen($imagen) {
+        // Elimina la imagen previa
+        if( !is_null($this->id) ) {
+            $this->borrarImagen();
+        }
+        // Asignar al atributo de imagen el nombre de la imagen
+        if($imagen) {
+            $this->imagen = $imagen;
+        }
+    }
+    
+    public function borrarImagen() {
+        // Comprobar si existe el archivo
+        $existeArchivo = file_exists(CARPETA_IMAGENES . $this->imagen);
+        if($existeArchivo) {
+            unlink(CARPETA_IMAGENES . $this->imagen);
+        }
+    }
+
+    public static function totalArray($array = []) {
+        $query = "SELECT COUNT(*) FROM " . static::$tabla . " WHERE ";
+        foreach($array as $key => $value) {
+            if($key == array_key_last($array)) {
+                $query .= " ${key} = '${value}' ";
+            } else {
+                $query .= " ${key} = '${value}' AND ";
+            }
+        }
+        $resultado = self::$db->query($query);
+        //debuguear($query);
+        $total = $resultado->fetch_array();
+        return array_shift($total);
+    }
+
+    public function getDatos(string $table){
+        $sql = "SELECT COUNT(*) AS total FROM $table";
+        $resultado = self::$db->query($sql);
+        $fila = $resultado->fetch_assoc();
+        return $fila['total'];
+    }
+
+    public function getCompras(){
+        $sql = "SELECT COUNT(*) AS total FROM compra WHERE status = 2";
+        $resultado = self::$db->query($sql);
+        $fila = $resultado->fetch_assoc();
+        return $fila['total'];
+    }
+
+
 }
+

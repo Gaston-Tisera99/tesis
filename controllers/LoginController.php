@@ -38,7 +38,7 @@ class LoginController {
                             $_SESSION['admin'] = $usuario->admin ?? null;
                             header('Location: /admin');
                        }else{
-                            header('Location: /tienda');
+                            header('Location: /dashboard');
                        }
                     }
                     
@@ -57,7 +57,11 @@ class LoginController {
     }
 
     public static function logout(){
-        echo "Desde logout";
+        IF($_SERVER['REQUEST_METHOD'] === 'POST'){
+            session_start();
+            $_SESSION = [];
+            header('Location: /');
+        }
     }
 
     public static function olvide(Router $router){
@@ -187,7 +191,7 @@ class LoginController {
         $router->render('auth/mensaje');
     }
 
-    public static function confirmar(Router $router){
+    public static function confirmar(Router $router){   
 
         $alertas = [];
 
