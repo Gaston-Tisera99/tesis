@@ -102,6 +102,10 @@ $router->post('/api/editar-categorias', [APICategoria::class, 'editar']);
 //API -PROVEEDOR
 $router->get('/api/proveedor', [APIProveedor::class, 'index']);
 $router->post('/api/proveedor', [APIProveedor   ::class, 'index']);
+$router->get('/api/editar-proveedor', [APIProveedor::class, 'editar']);
+$router->post('/api/editar-proveedor', [APIProveedor::class, 'editar']);
+$router->get('/api/eliminar-proveedor', [APIProveedor::class, 'eliminar']);
+$router->post('/api/eliminar-proveedor', [APIProveedor::class, 'eliminar']);
 
 //API - clientes
 $router->get('/api/clientes', [APIClientes::class, 'index']);

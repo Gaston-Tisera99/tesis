@@ -29,7 +29,7 @@
                                 <td style="text-align: center;">
                                 <form method="POST" target ="_blank" action="/pdfCompra" class="d-inline">
                                         <input type="hidden" name="id" value="<?php echo $ver['id']; ?>">  
-                                        <input type="submit" value="Ver Orden" class="btn btn-raised btn-success btn-xs">
+                                        <input type="submit" value="Ver Compras" class="btn btn-raised btn-success btn-xs">
                                     </form>      
                                 </td>
                             </tr>
