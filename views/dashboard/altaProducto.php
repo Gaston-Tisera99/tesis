@@ -53,7 +53,7 @@
             <div class="row mb-3">
                 <label for="codigo">Código:</label>
                 <div class="col-6">
-                    <input class="form-control" type="text" id="codigo" name="codigo" value="<?php echo s($producto->codigo)?>"><br>
+                    <input class="form-control" type="number" id="codigo" name="codigo" value="<?php echo s($producto->codigo)?>"><br>
                 </div>
             </div>
 
@@ -88,7 +88,7 @@
             <div class="row mb-3">
                 <label for="fechacreado">Fecha creado:</label>
                 <div class="col-6">
-                    <input class="form-control" type="date" id="fechacreado" name="datecreated" value="<?php echo s($producto->datecreated)?>" max="<?= date("Y-m-d") ?>" required><br>
+                <input class="form-control" type="datetime-local" id="fechacreado" name="datecreated" value="<?php echo s($producto->datecreated); ?>" required><br>
                 </div>
             </div>
             

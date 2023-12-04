@@ -29,7 +29,7 @@
                                 <td style="text-align: center;">
                                 <form method="POST" target ="_blank" action="/pdfCompra" class="d-inline">
                                         <input type="hidden" name="id" value="<?php echo $ver['id']; ?>">  
-                                        <input type="submit" value="Ver Compras" class="btn btn-raised btn-success btn-xs">
+                                        <input type="submit" value="VER COMPRA" class="btn btn-raised btn-success btn-xs">
                                     </form>      
                                 </td>
                             </tr>
@@ -53,7 +53,12 @@
 
 <script>
     $(document).ready(function(){
-        $('#myTable').DataTable();
+        $('#myTable').DataTable({
+            "order": [[2, "desc" ]],
+            "language": {
+            "url": "//cdn.datatables.net/plug-ins/1.10.16/i18n/Spanish.json"
+        }
+        });
     })
 </script>
 

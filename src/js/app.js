@@ -181,7 +181,7 @@ function sumar(){
     for (x of data){
        tot=tot+x.total;
     }
-    document.querySelector("#precioTotal").innerHTML="Total: "+tot;
+    document.querySelector("#precioTotal").innerHTML="Total a pagar: "+tot;
 } 
 
 function cantidad(row){
@@ -254,7 +254,7 @@ function save(){
             Swal.fire({
                 icon: 'success',
                 title: 'Exito',
-                text: 'La venta se registro con exito!',
+                text: 'El PEDIDO se registro con exito!',
                 showConfirmButton: false,
                 timer: 2000
             });

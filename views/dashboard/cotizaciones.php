@@ -79,7 +79,7 @@
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                             aria-expanded="false">
-                            VENTAS
+                            PEDIDOS
                         </a>
                         <ul class="dropdown-menu list-unstyled">
                             <li class="nav-item"><a class="dropdown-item" href="/cotizaciones">NUEVO PEDIDO</a></li>
@@ -199,9 +199,7 @@
                     <button type="button" class="btn btn-danger mt-3" id="cancelar" style="margin-right: 10px;">Cancelar</button>
                 </div>
             </div>
-            <div class="col-lg-5">
-                <button type="button" class="btn btn-primary mt-3" id="guardar" style="margin-right: 10px;">Guardar</button>             
-            </div>    
+              
         </form>
         
         <br>
@@ -225,6 +223,9 @@
                         </table>
                         <div class="col-lg-3 mt-5">
                             <div class="col-10 text-right mt-5" id="precioTotal" name="precioTotal"></div>
+                        </div>  
+                        <div class="col-lg-5">
+                            <button type="button" class="btn btn-primary mt-3" id="guardar" style="margin-right: 10px;">Procesar</button>             
                         </div>  
                     </div>
                 </div>

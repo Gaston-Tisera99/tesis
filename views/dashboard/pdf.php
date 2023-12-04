@@ -31,15 +31,7 @@
      $this->SetFont('Arial', 'B', 10);
      $this->SetX(115);
      $this->Cell(59, 10, mb_convert_encoding("Teléfono : 3515958890" , 'ISO-8859-1', 'UTF-8'), 0, 0, '', 0);
-     $this->Ln(5);
-
-     /* COREEO */
-     $this->Cell(110);   
-     $this->SetFont('Arial', 'B', 10);
-     $this->SetX(115);
-     $this->Cell(96, 10, mb_convert_encoding("Ubicación : Eliseo Soaje 1285 Bº Alto de Velez Sarfield", 'ISO-8859-1', 'UTF-8'), 0, 0, '', 0);
      $this->Ln(20);
-
   }
 
 

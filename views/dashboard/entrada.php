@@ -97,12 +97,12 @@
                         <div class="form-group mt-2">
                             <strong class="text-primary"><i class="fas fa-ad"></i> Total a pagar: </strong>
                             <strong id="totalV"></strong><br>
-                            <button class="btn btn-success" type="button" id="procesarCompra"><i class="fas fa-ad"></i> Procesar</button>
+                            <button class="btn btn-primary" type="button" id="procesarCompra"><i class="fas fa-ad"></i> Procesar</button>
                         </div>
                     </div>
                 </div>
             </div>
-        </section>
+        </section>  
     </div>
 </div>
 </body>

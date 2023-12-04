@@ -110,11 +110,13 @@ class DashboardController {
                 
                 //verificar que el producto no este creado
                 $resultado = $producto->existeProducto();
-
+                $fechaHora = date("Y-m-d H:i:s", strtotime($_POST['datecreated']));
+                $producto->datecreated = $fechaHora;
                 if($resultado->num_rows){
                     $alertas = Productos::getAlertas();
                 }else{
                     //dar de alta a un producto
+                   
                     $resultado = $producto->guardar();
                     
                     if($resultado){

@@ -35,13 +35,13 @@
                                     <input type="hidden" name="id" value="<?php echo $ver['id']; ?>">
                                     <button class="btn btn-danger mx-2 eliminar-btn" data-id="<?php echo $ver['id']; ?>"><i class="fas fa-trash"></i></i></button>
                                 </td>
-                                <td style="text-align: center;" class="d-flex justify-content-center">
+                                <td style="text-align: center;">
                                     <form action="" method="POST" class="d-inline"> 
-                                        <button type="button" class="btn btn-raised btn-warning btn-xs confirmar mx-2" data-id="<?php echo $ver['id']; ?>">CONFIRMAR COMPRA</button>
+                                        <button type="button" class="btn btn-raised btn-warning btn-xs confirmar mx-2" data-id="<?php echo $ver['id']; ?>">CONFIRMAR ORDEN</button>
                                     </form>
-                                    <form method="POST" target ="_blank" action="/pdfCompra" class="d-inline">
+                                    <form method="POST" target ="_blank" action="/pdfCompra" class="d-inline mx-2">
                                         <input type="hidden" name="id" value="<?php echo $ver['id']; ?>">  
-                                        <input type="submit" value="Ver Orden" class="btn btn-raised btn-success btn-xs">
+                                        <input type="submit" value="VER ORDEN" class="btn btn-raised btn-success btn-xs">
                                     </form>   
                                 </td>
                             </tr>
@@ -64,6 +64,19 @@
 
 <script>
     $(document).ready(function(){
-        $('#myTable').DataTable();
+        $('#myTable').DataTable({
+            "order": [[2, "desc" ]],
+            "columns": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            { "width": "22%" }
+        ],
+        "language": {
+            "url": "//cdn.datatables.net/plug-ins/1.10.16/i18n/Spanish.json"
+        }
+        });
     })
 </script>

@@ -41,7 +41,7 @@ class Pedido extends ActiveRecord {
     }
 
     public function getTotalVentas(){
-        $sql = "SELECT SUM(monto) as monto FROM pedido WHERE status = 2";
+        $sql = "SELECT SUM(monto) as monto FROM pedido WHERE status = 2 and date_format(fecha, '%d-%m-%Y') = date_format(now(), '%d-%m-%Y')";
         $resultado = self::$db->query($sql);
         $fila = $resultado->fetch_assoc();
         return $fila['monto'];

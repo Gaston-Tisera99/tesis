@@ -74,7 +74,12 @@
 </body>
 <script>
     $(document).ready(function(){
-        $('#myTable').DataTable();
+        $('#myTable').DataTable({
+            "order": [[5, "desc" ]],
+            "language": {
+            "url": "//cdn.datatables.net/plug-ins/1.10.16/i18n/Spanish.json"
+        },
+        });
     })
 </script>
 

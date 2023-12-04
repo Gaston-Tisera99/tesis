@@ -9,7 +9,7 @@
         <div class="col-xl-3 col-6">
                 <div class="card bg-success">  
                     <div class="card-body d-flex text-white">
-                        TOTAL VENDIDO
+                        TOTAL VENDIDO HOY
                         <i class="fas fa-thin fa-cart-plus fa-2x ml-auto"></i>
                     </div>
                     <div class="card-footer d-flex align-items-center justify-content-between">
@@ -21,7 +21,7 @@
                 <table id="myTable" class="table table-hover table-resposive" style="width:100%">
                         <thead>
                             <tr class="table-dark">
-                                <td class="col-2">Id Pedido</td>
+                                <td class="col-2">Id Venta</td>
                                 <td>Cliente</td>
                                 <td>Fecha</td>
                                 <td>Monto</td>
@@ -40,7 +40,7 @@
                                 <td style="text-align: center;">
                                     <form method="POST" target ="_blank" action="/pdf" class="d-inline">
                                         <input type="hidden" name="id" value="<?php echo $ver['idpedido']; ?>">  
-                                        <input type="submit" value="Ver Venta" class="btn btn-raised btn-success btn-xs">
+                                        <input type="submit" value="VER VENTA" class="btn btn-raised btn-success btn-xs">
                                     </form>
                                     
                                 </td>
@@ -65,7 +65,12 @@
 
 <script>
     $(document).ready(function(){
-        $('#myTable').DataTable();
+        $('#myTable').DataTable({
+            "order": [[2, "desc" ]],
+            "language": {
+            "url": "//cdn.datatables.net/plug-ins/1.10.16/i18n/Spanish.json"
+        }
+        });
     })
 </script>
 

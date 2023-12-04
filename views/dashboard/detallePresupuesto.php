@@ -27,14 +27,13 @@
                                 <td><?php echo $ver['fecha']; ?></td>
                                 <td><?php echo $ver['monto']; ?></td>
                                 <td style="text-align: center;">
-                                <form action="" method="POST" class="d-inline">
-                                <button type="button" class="btn btn-raised btn-warning btn-xs confirmar" data-idpedido="<?php echo $ver['idpedido']; ?>">CONFIRMAR VENTA</button>
+                                <form action="" method="POST" class="d-inline mx-2">
+                                <button type="button" class="btn btn-raised btn-warning btn-xs confirmar" data-idpedido="<?php echo $ver['idpedido']; ?>">CONFIRMAR PEDIDO</button>
                                 </form>     
-                                    <form method="POST" target ="_blank" action="/pdf" class="d-inline">
+                                    <form method="POST" target ="_blank" action="/pdf" class="d-inline mx-2">
                                         <input type="hidden" name="id" value="<?php echo $ver['idpedido']; ?>">  
-                                        <input type="submit" value="Ver Pedido" class="btn btn-raised btn-success btn-xs">
+                                        <input type="submit" value="VER PEDIDO" class="btn btn-raised btn-success btn-xs">
                                     </form>
-                                    
                                 </td>
                             </tr>
                             <?php 
@@ -57,7 +56,20 @@
 
 <script>
     $(document).ready(function(){
-        $('#myTable').DataTable();
+        $('#myTable').DataTable({
+            "order": [[2, "desc" ]],
+            "columns": [
+            null,
+            null,
+            null,
+            null,
+            { "width": "22%" }
+        ],
+        "language": {
+            "url": "//cdn.datatables.net/plug-ins/1.10.16/i18n/Spanish.json"
+        }
+        });
+
     })
 </script>
 
