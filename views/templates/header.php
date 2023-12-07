@@ -69,8 +69,8 @@
             REPORTES
           </a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="reporte-producto">REPORTE DE UN PRODUCTO</a></li>
-            <li><a class="dropdown-item" href="reporte-fecha">REPORTE POR FECHA</a></li>
+            <!-- <li><a class="dropdown-item" href="reporte-fecha">REPORTE DE UN PRODUCTO</a></li> -->
+            <li><a class="dropdown-item" href="reporte-fecha">REPORTE DE UN PRODUCTO</a></li>
             <li><a class="dropdown-item" href="reporte-cliente">REPORTE DE UN CLIENTE</a></li>
           </ul>
         </li> 

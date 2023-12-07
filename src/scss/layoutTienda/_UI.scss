@@ -1,0 +1,29 @@
+@use 'base/variables' as v;
+@use 'base/mixins' as m;
+
+
+
+.contenedor-tienda{
+
+    border-radius: 1rem;
+    
+    @include m.tablet{
+        
+        display: grid;
+        min-height: 100vh;
+        
+    }
+
+ 
+    .tienda{
+        width: 95%;
+        margin: 0 auto;
+        padding: 3rem 0;
+        border-radius: 1rem;
+    }
+
+    
+}
+
+
+

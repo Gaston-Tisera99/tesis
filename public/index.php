@@ -75,6 +75,8 @@ $router->get('/proveedor', [DashboardController::class, 'proveedor']);
 $router->post('/proveedor', [DashboardController::class, 'proveedor']);
 $router->get('/editar-compra', [DashboardController::class, 'editarCompra']);
 $router->post('/editar-compra', [DashboardController::class, 'editarCompra']);
+$router->get('/editar-venta', [DashboardController::class, 'editarVenta']);
+$router->post('/editar-venta', [DashboardController::class, 'editarVenta']);
 $router->get('/reporte-fecha', [DashboardController::class, 'reporteFecha']);
 $router->post('/reporte-fecha', [DashboardController::class, 'reporteFecha']);
 
@@ -83,6 +85,8 @@ $router->get('/api/stock', [APIProductos::class, 'apiGrafico']);
 $router->post('/api/stock', [APIProductos::class, 'apiGrafico']);
 $router->get('/api/vendidos', [APIProductos::class, 'graficoVendidos']);
 $router->post('/api/vendidos', [APIProductos::class, 'graficoVendidos']);
+$router->get('/api/buscar-productos', [APIProductos::class, 'buscarProductos']);
+$router->post('/api/buscar-productos', [APIProductos::class, 'buscarProductos']);   
 //API - pedidos
 $router->get('/api/productos', [APIPedidos::class, 'index']);
 $router->post('/api/productos', [APIPedidos::class, 'index']);
@@ -132,10 +136,16 @@ $router->get('/api/confirmar-compra', [APICompras::class, 'confirmarCompra']);
 $router->post('/api/confirmar-compra', [APICompras::class, 'confirmarCompra']);
 $router->get('/api/eliminar-compra', [APICompras::class, 'eliminar']);
 $router->post('/api/eliminar-compra', [APICompras::class, 'eliminar']);
+$router->get('/api/eliminar-item', [APICompras::class, 'eliminarItem']);
+$router->post('/api/eliminar-item', [APICompras::class, 'eliminarItem']);
 $router->get('/api/editar-compra', [APICompras::class, 'editar']);
 $router->post('/api/editar-compra', [APICompras::class, 'editar']);
+$router->get('/api/editar-cantidad', [APICompras::class, 'editarCantidad']);
+$router->post('/api/editar-cantidad', [APICompras::class, 'editarCantidad']);
 $router->get('/api/eliminar', [APICompras::class, 'eliminarCompra']);
 $router->post('/api/eliminar', [APICompras::class, 'eliminarCompra']);
+$router->get('/api/eliminar-venta', [APICompras::class, 'eliminarVenta']);
+$router->post('/api/eliminar-venta', [APICompras::class, 'eliminarVenta']);
 
 // Comprueba y valida las rutas, que existan y les asigna las funciones del Controlador
 $router->comprobarRutas();

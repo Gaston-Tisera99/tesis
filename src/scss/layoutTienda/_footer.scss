@@ -1,0 +1,61 @@
+@use 'base/variables' as v;
+@use 'base/mixins' as m;
+
+footer {
+    background-color: v.$grisClaro;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    margin-top: 1rem;
+  }
+  
+  .footer-logo img {
+    width: 100px;
+    margin-right: 10px;
+  }
+  
+  .footer-info {
+    display: flex;
+    align-items: center;
+  }
+  
+  .footer-info .description {
+    display: flex;
+    align-items: center;
+    margin-left: 3rem;
+  }
+  
+  .ubicacion{
+      display: flex;
+      align-items: center;
+      margin-left: 3rem;
+  }
+  
+  .tiempo{
+      display: flex;
+      align-items: center;
+      margin-right: 10rem;
+  }
+  
+  .footer-info img {
+    width: 20px;
+    margin-right: 5px;
+  }
+  
+  .whatsapp-button {
+    background-color: #25d366;
+    margin-left: 60rem;
+    width: 150px;
+    padding: 10px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: v.$bold;
+  }
+  
+  .whatsapp-button a{
+    color: v.$blanco;
+  }
+  
+  .whatsapp-button a:hover {
+    background-color: #128c7e;
+  }

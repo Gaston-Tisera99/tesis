@@ -1,5 +1,7 @@
 <?php include_once __DIR__ .'/../templates/header.php' ?>
-
+<head>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous"/>
+</head>
 <body>
     
     <h1 class="text-center mt-5 mb-5">TODOS LOS PEDIDOS</h1>
@@ -14,6 +16,7 @@
                                 <td>Cliente</td>
                                 <td>Fecha</td>
                                 <td>Monto</td>
+                                <td>Editar o Eliminar</td>
                                 <td style="text-align: center;" class="col-2">Acciones</td>
                             </tr>
                         </thead>
@@ -26,6 +29,14 @@
                                 <td><?php echo $ver['nombre']; ?></td>
                                 <td><?php echo $ver['fecha']; ?></td>
                                 <td><?php echo $ver['monto']; ?></td>
+                                <td>
+                                    <input type="hidden" name="id" value="<?php echo $ver['idpedido']; ?>">
+                                        <a href="editar-venta?id=<?php echo $ver['idpedido']; ?>" class="btn btn-warning mx-2 btn-editar">
+                                        <i class="fas fa-edit"></i>
+                                        </a>
+                                    <input type="hidden" name="id" value="<?php echo $ver['idpedido']; ?>">
+                                    <button class="btn btn-danger mx-2 eliminar-btn" data-id="<?php echo $ver['idpedido']; ?>"><i class="fas fa-trash"></i></i></button>
+                                </td>
                                 <td style="text-align: center;">
                                 <form action="" method="POST" class="d-inline mx-2">
                                 <button type="button" class="btn btn-raised btn-warning btn-xs confirmar" data-idpedido="<?php echo $ver['idpedido']; ?>">CONFIRMAR PEDIDO</button>
@@ -63,7 +74,8 @@
             null,
             null,
             null,
-            { "width": "22%" }
+            null,
+            { "width": "18%" }
         ],
         "language": {
             "url": "//cdn.datatables.net/plug-ins/1.10.16/i18n/Spanish.json"

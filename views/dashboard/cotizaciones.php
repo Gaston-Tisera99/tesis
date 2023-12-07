@@ -23,6 +23,25 @@
     background: #343a40;
     color: white;
 }
+
+.list{
+    list-style-type: none;
+    width: 250px;
+    height : auto;
+    position : absolute;
+    z-index: 10;
+    padding: 10px; 
+}
+
+#list li {
+    background-color : #EEEEEE;
+    border-top: 1px solid #9E9E9E;
+    padding: 15px;
+    width: 100%;
+    float: left;
+    cursor: pointer;
+}
+
 </style>
 
 <head>
@@ -152,16 +171,27 @@
         <form action="" method="post" id="frmCompras" class="row" autocomplete="off">
                 <div class="col-md-3">
                     <div class="form-group">
-                        <label for="">Buscar Por Nombre:</label>
-                        <input type="text" name="buscar" id="buscar" onkeyup="buscarNombre(event);" placeholder="Buscar..." class="form-control">
+                        <p>
+                            <label for="campo">Buscar por Codigo o Nombre</label>
+                            <input type="text" name="campo" id="campo" placeholder="Buscar..." class="form-control">
+                            <div>
+                                <ul id="list" class="list"></ul>
+                            </div>
+                        </p>
                     </div>
                 </div>
+                <!-- <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="">Buscar Por Nombre:</label>
+                        <input type="text" name="buscar" id="buscar" onkeyup="buscarNombre(event);" placeholder="Buscar..." class="form-control" disabled>
+                    </div>
+                </div> -->
             <div class="col-lg-3">
                 <div class="form-group">
-                    <label for="codigo"><i class="fas fa-barcode"></i> Buscar Por Codigo:</label>
+                    <label for="codigo"><i class="fas fa-barcode"></i> Codigo</label>
                     <input type="hidden" id="id" name="id">
-                    <input id="codigo" onkeyup="BuscarCodigo(event);" class="form-control" type="text"
-                        name="codigo" placeholder="Código">
+                    <input id="codigo" class="form-control" type="text"
+                        name="codigo" placeholder="Código" disabled>
                     <span class="text-danger d-none" id="error"><i class="fas fa-ad"></i> No hay producto</span>
                 </div>
             </div>
@@ -207,8 +237,8 @@
             <div class="col-lg-12 mt-5">
                 <div class="table-responsive">
                     <div id="productos">
-                        <table class="table-hover table-bordered mt-5" style="width:100%" id="lista">
-                            <thead class="head">
+                        <table class="table table-striped table-resposive" style="width:100%" id="lista">
+                            <thead class="table-dark">
                                 <tr>
                                     <th>Codigo</th>
                                     <th>Nombre</th>

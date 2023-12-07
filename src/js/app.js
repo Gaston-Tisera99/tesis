@@ -6,91 +6,51 @@ var guardar=document.getElementById('guardar');
 
 boton.addEventListener("click",agregar);
 guardar.addEventListener("click",save);
-const nombrePro = document.getElementById("buscar");
+//const nombrePro = document.getElementById("buscar");
 const codigoPro = document.getElementById("codigo");
 
-function BuscarCodigo(event) {
-    event.preventDefault();
-    const id = document.getElementById("codigo").value;
-    if (event.key == "Enter") {
-        nombrePro.disabled = true;
-        codigoPro.disabled = true;
-        // Luego, puedes realizar la solicitud AJAX para buscar el producto
+document.getElementById("campo").addEventListener("keyup", getCodigos)
 
-        $.ajax({
-            url: '/api/buscar-producto',    
-            type: 'POST',
-            data: {
-                id: id // Enviar el código de barras como "id"
-            },
-            success: function (response) {
-                const res = JSON.parse(response)
-                if(res){
-                    document.getElementById("nombre").value = res.nombre;
-                    document.getElementById("precio").value = res.precio;
-                    document.getElementById("id").value = res.id;
-                    document.getElementById("buscar").value = '';
-                    document.getElementById("cantidad").focus();
-                }else{
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Error',
-                        text: 'Codigo de producto inexistente',
-                        showConfirmButton : false,
-                        timer: 2000
-                    })
-                   document.getElementById("codigo").value = '';
-                   document.getElementById("buscar").value = '';
-                    document.getElementById("codigo").focus();
-                    nombrePro.disabled = false;
-                    codigoPro.disabled = false;
-                }
-                
-            }
-        });
-        
-    }
-}
+function getCodigos(){
 
-function buscarNombre(event){
-    event.preventDefault();
-    const nombre = document.getElementById("buscar").value;
-    if(event.key == "Enter"){
-        nombrePro.disabled = true;
-        codigoPro.disabled = true;
-        $.ajax({
-            url : '/api/buscar-nombre',
-            type: 'POST',
-            data : {
-                nombre : nombre
-            },
-            success : function(response){
-                const res = JSON.parse(response) 
-                if(res){
-                    document.getElementById("codigo").value = res.codigo;
-                    document.getElementById("nombre").value = res.nombre;
-                    document.getElementById("precio").value = res.precio;
-                    document.getElementById("id").value = res.id;
-                    document.getElementById("cantidad").focus();
-                }else{
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Error',
-                        text: 'Nombre de producto inexistente',
-                        showConfirmButton : false,
-                        timer: 2000
-                    })
-                    document.getElementById("codigo").value = '';
-                    document.getElementById("buscar").value = '';
-                    document.getElementById("buscar").focus();
-                    nombrePro.disabled = false;
-                    codigoPro.disabled = false;
-                }
-            }
+    let inputCP = document.getElementById("campo").value
+    let lista = document.getElementById("list")
+
+    if(inputCP.length > 0){
+        let url = "/api/buscar-productos";
+        let formData = new FormData()
+        formData.append("campo", inputCP);
+    
+        fetch(url, {
+            method: "POST",
+            body: formData,
+            mode: "cors"
+        }).then(response => response.json())
+        .then(data => {
+            lista.style.display = 'block'
+            lista.innerHTML = data
         })
+        .catch(err => console.log(err))
+    }else{
+        lista.style.display = 'none';
     }
 
+   
 }
+
+function mostrar(id, codigo, nombre, precio) {
+    let lista = document.getElementById("list");
+    lista.style.display = 'none';
+    document.getElementById("id").value = id;   
+    document.getElementById("codigo").value = codigo;
+    document.getElementById("nombre").value = nombre;
+    document.getElementById("precio").value = precio;
+
+    document.getElementById("cantidad").focus();
+
+    document.getElementById("campo").value = "";
+}
+
 
 function IngresarCantidad(e){
     e.preventDefault();
@@ -109,9 +69,8 @@ function cancelar(){
     document.getElementById("id").value = "";
     document.getElementById("codigo").value = "";
     document.getElementById("sub_total").value = "";
-    document.getElementById("buscar").value = "";
-    nombrePro.disabled = false;
-    codigoPro.disabled = false;
+    //nombrePro.disabled = false;
+    //codigoPro.disabled = false;
 }
 
 
@@ -166,12 +125,11 @@ function agregar(){
   document.getElementById("id").value = "";
   document.getElementById("codigo").value = "";
   document.getElementById("sub_total").value = "";
-  document.getElementById("buscar").value = "";
 
-  nombrePro.disabled = false;
-  codigoPro.disabled = false;
+  //nombrePro.disabled = false;
+  //codigoPro.disabled = false;
   // Poner el foco en el campo "codigo" para continuar escaneando
-  document.getElementById("buscar").focus();
+
   cant++;
   sumar();
 }
@@ -181,13 +139,14 @@ function sumar(){
     for (x of data){
        tot=tot+x.total;
     }
-    document.querySelector("#precioTotal").innerHTML="Total a pagar: "+tot;
+    document.querySelector("#precioTotal").innerHTML="Total: "+tot;
 } 
 
 function cantidad(row){
-    var canti = parseFloat(prompt("Nueva Cantidad"));
-    data[row].cantidad = canti;
-    if (isNaN(data[row].cantidad) || data[row].cantidad <= 0) {
+    // Crear un campo de entrada para la nueva cantidad
+    var newCantidad = parseFloat(prompt("Nueva Cantidad"));
+
+    if (isNaN(newCantidad) || newCantidad <= 0) {
         Swal.fire({
             icon: 'error',
             title: 'Error',
@@ -197,11 +156,16 @@ function cantidad(row){
         });
         return; // Detener la ejecución si la cantidad no es válida
     }
-    data[row].total = data[row].cantidad*data[row].precio;
+
+    data[row].cantidad = newCantidad;
+    data[row].total = newCantidad * data[row].precio;
+
+    // Actualizar la tabla directamente
     var filaid = document.getElementById("row" + row);
-    celda=filaid.getElementsByTagName('td');
-    celda[3].innerHTML = canti;
+    celda = filaid.getElementsByTagName('td');
+    celda[3].innerHTML = newCantidad;
     celda[4].innerHTML = data[row].total;
+
     sumar();
 }
 
@@ -254,7 +218,7 @@ function save(){
             Swal.fire({
                 icon: 'success',
                 title: 'Exito',
-                text: 'El PEDIDO se registro con exito!',
+                text: 'La venta se registro con exito!',
                 showConfirmButton: false,
                 timer: 2000
             });

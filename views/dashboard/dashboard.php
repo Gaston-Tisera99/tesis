@@ -7,7 +7,7 @@
     <h1 class="mt-5"><?php echo $titulo; ?></h1>
     
     <main class="content px-3 py-2 bg-light">
-        <div class="container-fluid">
+        <!-- <div class="container-fluid">
             <div class="row">
                 <div class="col-12 col-md-6 d-flex">
                     <div class="card flex-fill border-0 illustration">
@@ -27,7 +27,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
         <div class="row mt-4">
             <div class="col-xl-3 col-md-6">
                 <div class="card bg-success">  

@@ -55,6 +55,22 @@ class DashboardController {
         ]);
     }
 
+    public static function editarVenta(Router $router){
+        if(isset($_GET)){
+            $db = conexion();
+            $id = $_GET['id'];
+            $sql = "SELECT d.id, d.codigo, d.nombre, d.precio, d.cantidad, d.total 
+            FROM detalle_pedido d inner join pedido p on d.pedidoid = p.idpedido 
+            WHERE p.idpedido = '$id'";
+            $result = mysqli_query($db, $sql);
+        }
+        $router->render2('dashboard/editarVenta', [
+            'db' => $db,
+            'sql' => $sql,
+            'result' =>$result,
+        ]);    
+    }
+
     public static function editarCompra(Router $router){
 
         if(isset($_GET)){

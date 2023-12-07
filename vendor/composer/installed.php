@@ -3,7 +3,7 @@
         'name' => 'marina/app-salon_php_mvc_js_sass',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => '98fbc56d3a2bda9efaab465b93c63b837191bffc',
+        'reference' => '63efcb5550495d2545fa5df4e13cad022771bcc0',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -40,7 +40,7 @@
         'marina/app-salon_php_mvc_js_sass' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => '98fbc56d3a2bda9efaab465b93c63b837191bffc',
+            'reference' => '63efcb5550495d2545fa5df4e13cad022771bcc0',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),

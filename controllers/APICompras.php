@@ -231,6 +231,58 @@ class APICompras{
         mysqli_close($con);
     }
 
+    public static function eliminarItem(){
+        $con = mysqli_connect("localhost", "root", "27deagosto", "appmito");
+        if(isset($_POST)){
+            $id = $_POST['id']; 
+            $query = "SELECT pedidoid, total FROM detalle_pedido WHERE id = $id";
+            $resultado = mysqli_query($con, $query);
+            $success = true;
+            $errorCant = true;
+            if($resultado){
+                while ($row = mysqli_fetch_assoc($resultado)) {
+
+                    $total = $row['total'];
+                    $pedidoid = $row['pedidoid'];
+
+                    $sql = "SELECT COUNT(pedidoid) as cantidad FROM detalle_pedido WHERE pedidoid = $pedidoid";
+                    $res = mysqli_query($con, $sql);
+
+                    $rowCantidad = mysqli_fetch_assoc($res);
+                    $cantidadProductos = $rowCantidad['cantidad'];
+
+                    if ($cantidadProductos > 1) {
+                        $sqltotal = "UPDATE pedido SET monto = monto - $total WHERE idpedido = $pedidoid";
+                        $result = mysqli_query($con, $sqltotal);
+
+                        if($result){
+                            $sqlEliminar = "DELETE FROM detalle_pedido WHERE id = $id";
+                            $eliminar = mysqli_query($con, $sqlEliminar);
+                        }
+                    }else{
+                        if($errorCant){
+                            echo "errorCant";
+                        }
+                        return;
+                    }
+
+                }
+
+                if ($success) {
+                    echo "success";
+                } else {
+                    echo "error";
+                }
+            }
+        } else {
+            // Error al actualizar el estado del pedido
+            echo "error";
+        }
+
+        mysqli_close($con);
+    }
+
+
     public static function editar(){
         $con = mysqli_connect("localhost", "root", "27deagosto", "appmito");
     
@@ -266,6 +318,39 @@ class APICompras{
         mysqli_close($con);
     }   
 
+    public static function editarCantidad(){
+        $con = mysqli_connect("localhost", "root", "27deagosto", "appmito");
+    
+        if (isset($_POST)) {
+            $id = $_POST['id'];
+            $cantidad = $_POST['cantidad'];
+    
+            
+                // Utilizar una sentencia preparada para evitar la inyección SQL
+                $stmt = mysqli_prepare($con, "UPDATE detalle_pedido SET cantidad = ?, total = precio * ? WHERE id = ?");
+                mysqli_stmt_bind_param($stmt, "iii", $cantidad, $cantidad, $id);
+    
+                $result = mysqli_stmt_execute($stmt);
+
+                if ($result) {
+                    // Recalcular el monto total en la tabla compra
+                    $sqlRecalcularMonto = "UPDATE pedido SET monto = COALESCE((SELECT SUM(total) FROM detalle_pedido WHERE pedidoid = pedido.idpedido), 0)";    
+                    $resultRecalcularMonto = mysqli_query($con, $sqlRecalcularMonto);
+    
+                    if ($resultRecalcularMonto)  {
+                        echo "success";
+                    } else {
+                        echo "error al recalcular el monto";
+                    }
+                } else {
+                    echo "error al actualizar detalle_pedido";
+                }
+        }else{
+            echo "error";
+        }
+        mysqli_close($con);
+    }
+
     public static function eliminarCompra(){
         $con = mysqli_connect("localhost", "root", "27deagosto", "appmito");
         if($_POST['action'] == 'eliminarCompra'){
@@ -288,6 +373,29 @@ class APICompras{
             mysqli_close($con);
         }
 
+    }
+
+    public static function eliminarVenta(){
+        $con = mysqli_connect("localhost", "root", "27deagosto", "appmito");
+        if($_POST['action'] == 'eliminarVenta'){
+            $id = $_POST['id'];
+            $sql = "DELETE FROM detalle_pedido WHERE pedidoid = $id";
+            $result = mysqli_query($con, $sql);
+
+            if($result){
+                $sql = "DELETE FROM pedido WHERE idpedido = $id";
+                $resultado = mysqli_query($con, $sql);
+                if($resultado){
+                    echo "success";
+                }else{
+                    echo "error";
+                }
+            }else{
+                echo "error";
+            }
+
+            mysqli_close($con);
+        }
     }
 }
 
