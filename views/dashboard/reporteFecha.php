@@ -1,5 +1,5 @@
 <?php include_once __DIR__ .'/../templates/header.php' ?>
-<h1>PRODUCTOS MAS VENDIDOS POR FECHA</h1>
+<h1>REPORTE DE PRODUCTOS</h1>
         <div class="container">
             
             <form action="" method="POST">
@@ -17,7 +17,7 @@
                         </div>
                     </div>
                     <div class="col-md-6">
-                        <button type="button" class="btn btn-raised btn-success btn-xs" id="buscar" name="buscar">BUSCAR</button>
+                        <button type="button" class="btn btn-raised btn-success btn-xs mt-4" id="buscar" name="buscar">BUSCAR</button>
                     </div>
                 </div>
             </form>

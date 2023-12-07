@@ -1,5 +1,5 @@
 <?php include_once __DIR__ .'/../templates/header.php' ?>
-<h1>GRAFICO DE CLIENTES</h1>
+<h1>REPORTE  DE CLIENTES</h1>
       <div class="container">
             <form action="" method="POST">
                 <div class="row">

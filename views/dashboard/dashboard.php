@@ -123,6 +123,7 @@
                             data: {
                                 labels: resultado.map(producto => producto.nombre),
                                 datasets: [{
+                                    label: 'Productos con Stock minimo',
                                     data : resultado.map(producto => producto.stock),
                                     backgroundColor: [
                                     '#ea580c',
@@ -139,17 +140,15 @@
                             },
                             options: {
                                 scales: {
-                                    y: {
-                                        beginAtZero: true,
-                                        stepSize: 1,
-                                        max: 10 
+                                        y: {
+                                            ticks: {
+                                            precision: 0,
+                                            max: 100, // Número de decimales    
+                                            beginAtZero: true,
+                                            stepSize: 5 // Comenzar en cero
+                                            }   
+                                        }
                                     }
-                                },
-                                plugins: {
-                                    legend: {
-                                        display: false
-                                    }
-                                }
                             }
                         });
                     }

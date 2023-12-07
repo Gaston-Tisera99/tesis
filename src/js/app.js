@@ -218,7 +218,7 @@ function save(){
             Swal.fire({
                 icon: 'success',
                 title: 'Exito',
-                text: 'La venta se registro con exito!',
+                text: 'El pedido se registro con exito!',
                 showConfirmButton: false,
                 timer: 2000
             });

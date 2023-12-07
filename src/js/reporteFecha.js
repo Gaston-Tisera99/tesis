@@ -61,7 +61,7 @@ $(document).ready(function () {
             data: {
                 labels: etiquetas, // Reemplaza 'labels' con el nombre de tu propiedad de etiquetas
                 datasets: [{
-                    label: 'Ventas por fecha',
+                    label: 'LOS 10 PRODUCTOS MAS VENDIDOS',
                     data: datos, // Reemplaza 'data' con el nombre de tu propiedad de valores
                     backgroundColor: [
                         '#ea580c',

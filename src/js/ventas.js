@@ -7,7 +7,7 @@ $(document).ready(function(){
 
     function mostrarConfirmacionVenta(id){
         Swal.fire({
-            title: '¿Seguro que desea confirmar la VENTA?',
+            title: '¿Seguro que desea confirmar este pedido como una venta?',
             text: 'Esta acción no se podrá deshacer',
             icon: 'warning',
             showCancelButton: true,
@@ -54,7 +54,7 @@ $(document).ready(function(){
 
     function mostrarConfirmacionEliminar(id){
         Swal.fire({
-            title: '¿Seguro que deseas eliminar este registro?',
+            title: '¿Seguro que deseas eliminar este Pedido?',
             text: 'Esta accion no se podra deshacer',   
             icon: 'warning',
             showCancelButton: true, 
@@ -78,7 +78,7 @@ $(document).ready(function(){
                 Swal.fire({
                     icon: 'success',
                     title: 'Éxito',
-                    text: 'Usuario eliminado correctamente',
+                    text: 'Pedido eliminado correctamente',
                 }).then((result) => {
                     if (result.isConfirmed) {
                         location.reload();

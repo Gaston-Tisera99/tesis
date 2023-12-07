@@ -92,7 +92,7 @@ class Productos extends ActiveRecord {
     } 
     
     public function getStock(){
-        $sql = "SELECT * FROM producto WHERE stock < 10 ORDER BY stock DESC limit 10";
+        $sql = "SELECT * FROM producto ORDER BY stock asc LIMIT 5;";
         $resultado = self::$db->query($sql);
         
         // Inicializar un array para almacenar todos los resultados
