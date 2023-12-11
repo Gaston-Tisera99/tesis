@@ -79,7 +79,7 @@
             </div>
 
             <div class="row mb-3"> 
-                <label for="stock">Stock:</label>
+                <label for="stock">Stock Inicial:</label>
                 <div class="col-6">
                     <input class="form-control" type="number" id="stock" name="stock" value="<?php echo s($producto->stock)?>"><br>
                 </div>

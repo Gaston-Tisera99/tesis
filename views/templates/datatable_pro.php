@@ -70,7 +70,7 @@
                         </div>
                         <div class="mb-3">
                             <label for="cuit-text" class="col-form-label">CUIT:</label>
-                            <input type="text" class="form-control" id="txtcuit">
+                            <input type="text" maxlength="13" class="form-control" id="txtcuit">
                         </div>
                         <div class="mb-3">
                             <label for="direccion-text" class="col-form-label">Direccion:</label>
@@ -78,7 +78,7 @@
                         </div>
                         <div class="mb-3">
                             <label for="telefono-text" class="col-form-label">Telefono:</label>
-                            <input type="text" class="form-control" id="txttelefono">
+                            <input type="number" oninput="limitarNumero(this, 10)" class="form-control" id="txttelefono">
                         </div>
                         <div class="mb-3">
                             <label for="email-text" class="col-form-label">E-mail:</label>
@@ -110,7 +110,7 @@
                         </div>
                         <div class="mb-3">
                             <label for="cuit-text" class="col-form-label">CUIT:</label>
-                            <input type="text" class="form-control" id="txtcuit_actualizar">
+                            <input type="text" maxlength="13" class="form-control" id="txtcuit_actualizar">
                         </div>
                         <div class="mb-3">
                             <label for="direccion-text" class="col-form-label">Direccion:</label>
@@ -118,7 +118,7 @@
                         </div>
                         <div class="mb-3">
                             <label for="telefono-text" class="col-form-label">Telefono:</label>
-                            <input type="text" class="form-control" id="txttelefono_actualizar">
+                            <input type="number" oninput="limitarNumero(this, 10)" class="form-control" id="txttelefono_actualizar">
                         </div>
                         <div class="mb-3">
                             <label for="email-text" class="col-form-label">E-mail:</label>
@@ -153,6 +153,22 @@
             cargarDatosProveedor(id);
         })
     })
+
+
+    function limitarNumero(input, maxLength) {
+    let value = input.value;
+
+    // Elimina cualquier caracter que no sea un número
+    value = value.replace(/\D/g, '');
+
+    // Limita la longitud del número
+    if (value.length > maxLength) {
+        value = value.slice(0, maxLength);
+    }
+
+    // Actualiza el valor del campo de entrada
+    input.value = value;
+}
 </script>
 
 

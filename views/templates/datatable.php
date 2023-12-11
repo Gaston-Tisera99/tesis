@@ -72,19 +72,19 @@
                     </div>
                     <div class="form-group">
                         <label for="message-text" class="col-form-label">Telefono:</label>
-                        <textarea class="form-control" id="txttelefono"></textarea>
+                        <input type="number" class="form-control" id="txttelefono" oninput="limitarNumero(this, 10)"></input>
                     </div>
                     <div class="form-group">
                         <label for="message-text" class="col-form-label">dni:</label>
-                        <textarea class="form-control" id="txtdni"></textarea>
+                        <input type="number" class="form-control" id="txtdni" oninput="limitarNumero(this, 8)"></input>
                     </div>
                     <div class="form-group">
                         <label for="message-text" class="col-form-label">cuit:</label>
-                        <textarea class="form-control" id="txtcuit"></textarea>
+                        <input type="text" class="form-control" maxlength="13" id="txtcuit"></input>
                     </div>
                     <div class="form-group">
                         <label for="message-text" class="col-form-label">email:</label>
-                        <textarea class="form-control" id="txtemail"></textarea>
+                        <input type="text" class="form-control" id="txtemail"></input>
                     </div>
                 </form>
             </div>
@@ -120,19 +120,19 @@
                     </div>
                     <div class="form-group">
                         <label for="message-text" class="col-form-label">Telefono:</label>
-                        <textarea class="form-control" id="txttelefono_actualizar"></textarea>
+                        <input type="number" class="form-control" id="txttelefono_actualizar" oninput="limitarNumero(this, 10)"></input>
                     </div>
                     <div class="form-group">
                         <label for="message-text" class="col-form-label">dni:</label>
-                        <textarea class="form-control" id="txtdni_actualizar"></textarea>
+                        <input type="number" class="form-control" id="txtdni_actualizar" oninput="limitarNumero(this, 8)"></input>
                     </div>
                     <div class="form-group">
                         <label for="message-text" class="col-form-label">cuit:</label>
-                        <textarea class="form-control" id="txtcuit_actualizar"></textarea>
+                        <input type="text" class="form-control" maxlength="13" id="txtcuit_actualizar"></input>
                     </div>
                     <div class="form-group">
                         <label for="message-text" class="col-form-label">email:</label>
-                        <textarea class="form-control" id="txtemail_actualizar"></textarea>
+                        <input type="text" class="form-control" id="txtemail_actualizar"></input>
                     </div>
                 </form>
             </div>
@@ -157,6 +157,22 @@
             cargarDatosClientes(id);
         })
     })
+
+    function limitarNumero(input, maxLength) {
+    let value = input.value;
+
+    // Elimina cualquier caracter que no sea un número
+    value = value.replace(/\D/g, '');
+
+    // Limita la longitud del número
+    if (value.length > maxLength) {
+        value = value.slice(0, maxLength);
+    }
+
+    // Actualiza el valor del campo de entrada
+    input.value = value;
+}
+
 </script>
 <script src='build/js/app.js'></script>
 
