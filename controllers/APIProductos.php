@@ -48,6 +48,45 @@ class APIProductos{
             echo json_encode($html, JSON_UNESCAPED_UNICODE);
         }
     }
+    
+    public static function buscarCodigo(){
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $codigo = $_POST['codigo'];
+    
+            $con = mysqli_connect("localhost", "root", "27deagosto", "appmito");
+        
+            // Verificar la conexión
+            if (!$con) {
+                die("Conexión fallida: " . mysqli_connect_error());
+            }
+        
+            // Escapar el código para evitar inyección SQL
+            $codigo = mysqli_real_escape_string($con, $codigo);
+        
+            // Consulta para verificar si el código está en uso
+            $query = "SELECT COUNT(*) AS cantidad FROM producto WHERE codigo = '$codigo'";
+            $result = mysqli_query($con, $query);
+        
+            // Verificar si la consulta fue exitosa
+            if ($result) {
+                $row = mysqli_fetch_assoc($result); 
+                $cantidad = $row['cantidad'];
+                
+                if ($cantidad > 0) {
+                    echo "¡El código está en uso!";
+                } else {
+                    echo "¡El código está disponible!";
+                }
+        
+                // Cerrar la conexión a la base de datos
+                mysqli_close($con);
+            
+            } else {
+                // Manejar errores en la consulta
+                echo "Error en la consulta: " . mysqli_error($con);
+            }
+        }
+    }
 }
 
 ?>

@@ -32,7 +32,7 @@
         </div>
         <section>
             <div class="container-fluid">
-                <div class="col-md-3">
+                <div class="col-md-3 mb-5">
                   <label for="codigo">Elegir Proveedor:</label>
                     <div class="input-group">
                         <select class="form-control" id="proveedor" name="proveedor">
@@ -45,14 +45,12 @@
                 </div>       
                 <form action="" method="post" id="frmCompras" class="row" autocomplete="off">
                     <div class="col-md-3">
-                        <div class="form-group">
-                            <p>
+                        <div class="form-group"> 
                                 <label for="campo">Buscar por Codigo o Nombre</label>
                                 <input type="text" name="campo" id="campo" placeholder="Buscar..." class="form-control">
                                 <div>
                                     <ul id="list" class="list"></ul>
                                 </div>
-                            </p>
                         </div>
                     </div>
                     <!-- <div class="col-md-3">

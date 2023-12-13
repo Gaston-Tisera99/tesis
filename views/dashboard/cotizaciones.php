@@ -147,13 +147,13 @@
     <h1 class="text-center mt-5 mb-5">CREAR UN NUEVO PEDIDO</h1>
         <div class="row">
             <div class="col-sm">
-                <p>Nuevo Pedido</p>
+                Nuevo Pedido</p>
             </div>
         </div>
         <form method="POST" class="formulario" action="cotizaciones" id="formulario">
             <div class="row mb-3">
                 
-                <div class="col-md-3">
+                <div class="col-md-3 mb-5">
                     <label for="codigo">Elegir Cliente:</label>
                     <div class="input-group">
                         <select class="form-control" id="cliente" name="cliente">
@@ -171,13 +171,11 @@
         <form action="" method="post" id="frmCompras" class="row" autocomplete="off">
                 <div class="col-md-3">
                     <div class="form-group">
-                        <p>
                             <label for="campo">Buscar por Codigo o Nombre</label>
                             <input type="text" name="campo" id="campo" placeholder="Buscar..." class="form-control">
                             <div>
                                 <ul id="list" class="list"></ul>
                             </div>
-                        </p>
                     </div>
                 </div>
                 <!-- <div class="col-md-3">

@@ -53,8 +53,9 @@
             <div class="row mb-3">
                 <label for="codigo">Código:</label>
                 <div class="col-6">
-                    <input class="form-control" type="number" id="codigo" name="codigo" value="<?php echo s($producto->codigo)?>"><br>
+                    <input class="form-control" type="number" id="codigo" name="codigo" oninput="verificarCodigoEnUso(this.value)" value="<?php echo s($producto->codigo)?>"><br>
                 </div>
+                <div id="mensajeCodigo" class="text-center" style="width: 150px; font-size: 16px; font-weight: bold;"></div>
             </div>
 
             <div class="row mb-3">
@@ -99,5 +100,44 @@
     </div>
     
 </body>
+<script>
+function verificarCodigoEnUso(codigo) {
+    // Verificar si el código está vacío
+    if (!codigo) {
+        document.getElementById("mensajeCodigo").innerHTML = "";
 
+        mensajeCodigo.style.border = "none";
+        mensajeCodigo.style.backgroundColor = "transparent";
+        return;
+    }   
+
+    // Realizar una solicitud AJAX para verificar el código
+    var xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState == 4) {
+            // Manejar la respuesta del servidor
+            if (xhr.status == 200) {
+                // Respuesta exitosa
+                var respuesta = xhr.responseText;
+                document.getElementById("mensajeCodigo").innerHTML = respuesta;
+                mensajeCodigo.innerHTML = respuesta;
+                mensajeCodigo.style.color = respuesta.includes("disponible") ? "green" : "red";
+                //mensajeCodigo.style.border = "1px solid";
+                //mensajeCodigo.style.borderColor = respuesta.includes("disponible") ? "green" : "red";
+                mensajeCodigo.style.backgroundColor = "rgba(255, 255, 255, 0.8)";
+               
+            } else {
+                // Error en la solicitud
+                console.error("Error en la solicitud AJAX");
+            }
+        }
+    };
+    
+    // Configurar y enviar la solicitud POST
+    xhr.open("POST", "/api/buscar-codigo", true);
+    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    xhr.send("codigo=" + encodeURIComponent(codigo));
+}
+
+</script>
 </html>

@@ -86,7 +86,9 @@ $router->post('/api/stock', [APIProductos::class, 'apiGrafico']);
 $router->get('/api/vendidos', [APIProductos::class, 'graficoVendidos']);
 $router->post('/api/vendidos', [APIProductos::class, 'graficoVendidos']);
 $router->get('/api/buscar-productos', [APIProductos::class, 'buscarProductos']);
-$router->post('/api/buscar-productos', [APIProductos::class, 'buscarProductos']);   
+$router->post('/api/buscar-productos', [APIProductos::class, 'buscarProductos']);  
+$router->get('/api/buscar-codigo', [APIProductos::class, 'buscarCodigo']);
+$router->post('/api/buscar-codigo', [APIProductos::class, 'buscarCodigo']);     
 //API - pedidos
 $router->get('/api/productos', [APIPedidos::class, 'index']);
 $router->post('/api/productos', [APIPedidos::class, 'index']);

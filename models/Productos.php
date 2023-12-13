@@ -44,8 +44,16 @@ class Productos extends ActiveRecord {
         if(!$this->precio){
             self::$alertas['error'][] = 'El precio del producto es obligatorio';
         }   
-        if(!$this->stock){
-            self::$alertas['error'][] = 'El stock del producto es obligatorio';
+        if($this->precio <= 0){
+            self::$alertas['error'][] = 'El precio del producto tiene que ser mayor a cero';
+       }
+        // if(!$this->stock){
+        //     self::$alertas['error'][] = 'El stock del producto es obligatorio';
+        // } 
+        if(empty($this->stock)){
+            $this->stock = 0;
+        }else if($this->stock < 0){
+            self::$alertas['error'][] = 'El stock del producto no puede ser negativo';
         }   
         if(!$this->datecreated){
             'La fecha de creacion del producto es obligatorio';

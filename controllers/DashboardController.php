@@ -128,6 +128,11 @@ class DashboardController {
                 $resultado = $producto->existeProducto();
                 $fechaHora = date("Y-m-d H:i:s", strtotime($_POST['datecreated']));
                 $producto->datecreated = $fechaHora;
+
+                if(empty($producto->stock)){
+                    $producto->stock = 0;
+                }
+
                 if($resultado->num_rows){
                     $alertas = Productos::getAlertas();
                 }else{
@@ -176,6 +181,10 @@ class DashboardController {
             $producto->sincronizar($_POST);
 
             $alertas = $producto->validarNuevoProducto();
+
+            if(empty($producto->stock)){
+                $producto->stock = 0;
+            }
 
             $producto->guardar();
             //debuguear($producto);

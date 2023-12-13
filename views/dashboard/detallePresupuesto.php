@@ -75,7 +75,7 @@
             null,
             null,
             null,
-            { "width": "18%" }
+            { "width": "22%" }
         ],
         "language": {
             "url": "//cdn.datatables.net/plug-ins/1.10.16/i18n/Spanish.json"
