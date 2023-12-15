@@ -116,7 +116,8 @@ class Productos extends ActiveRecord {
 
     public function getVendidos(){
         $sql = "SELECT sum(d.cantidad) vendidos, p.id as id_producto ,p.nombre as nombre_producto
-        FROM detalle_pedido d inner join producto p on P.id  = d.productoid
+        FROM detalle_pedido d inner join producto p on P.id  = d.productoid inner join pedido pe on d.pedidoid = pe.idpedido 
+        where pe.fecha BETWEEN DATE_SUB(NOW(), INTERVAL 1 month) AND NOW() and pe.status = 2
         GROUP BY d.productoid order by vendidos desc limit 5";
         $resultado = self::$db->query($sql);
         

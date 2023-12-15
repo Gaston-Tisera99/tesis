@@ -238,6 +238,20 @@ class DashboardController {
         ]);
     }
 
+    public static function pendientes(Router $router){
+
+        $db = conexion();
+        $sql = "CALL sp_ver_pedido";
+        $result = mysqli_query($db,$sql);
+
+
+        $router->render2('pedidos/pendientes',[
+            'db' => $db,
+            'sql' => $sql,
+            'result' =>$result
+        ]);
+    }
+
     public static function detallePresupuesto(Router $router){
 
         $db = conexion();

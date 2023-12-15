@@ -59,6 +59,8 @@ $router->get('/api', [DashboardController::class, 'api']);
 $router->post('/api', [DashboardController::class, 'api']);
 $router->get('/detalle-presupuesto', [DashboardController::class, 'detallePresupuesto']);
 $router->post('/detalle-presupuesto', [DashboardController::class, 'detallePresupuesto']);
+$router->get('/pendientes', [DashboardController::class, 'pendientes']);
+$router->post('/pendientes', [DashboardController::class, 'pendientes']);
 $router->get('/listar-ventas', [DashboardController::class, 'listarVentas']);
 $router->post('/listar-ventas', [DashboardController::class, 'listarVentas']);
 $router->get('/listar-compras', [DashboardController::class, 'listarCompras']);

@@ -37,11 +37,10 @@ class Email {
         $mail->CharSet = 'UTF-8';
 
         $contenido = "<html>";
-        $contenido .= "<p><strong>Hola " . $this->email . "</strong> Has creado tu cuenta en AppMito 
-        solo debes confirmarla presionando el siguiente enlace</p>";
+        $contenido .= "<p>El usuario de nombre <strong>" . $this->email . "</strong> ha solicitado crear una cuenta en AppMito, 
+        si deseas confirmar presiona el siguiente enlace</p>";
         $contenido .= "<p>Presiona aquí: <a href='http://localhost:4000/confirmar-cuenta?token=" 
         . $this->token . "'>Confirmar Cuenta</a></p>";
-        $contenido .= "<p>Si tu no solicitaste este cambio o está cuenta, puedes ignorar el mensaje</p>";
         $contenido .= "</html>";    
 
         $mail->Body = $contenido;

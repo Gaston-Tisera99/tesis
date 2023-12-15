@@ -1,3 +1,4 @@
+
 <h1 class="nombre-pagina">Bienvenidos a <span>MITO LIMPIEZAS</span></h1>
 <p class="descripcion-pagina">Inicia sesión con tus datos</p>
 
@@ -30,6 +31,6 @@
 </form>
 
 <div class="acciones">
-    <a href="/crear-cuenta">¿Aún no tienes cuenta? Crear Cuenta</a>
+    <a href="/crear-cuenta">Crear una Cuenta</a>
     <a href="/olvide">¿Olvidaste tu password?</a>
 </div>

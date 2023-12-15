@@ -93,7 +93,7 @@
                     <div class="card mb-4">
                         <div class="card-header">
                             <i class="fas fa-chart-pie mr-1"></i>
-                            Productos Más vendidos
+                            Productos Más vendidos(MES ACTUAL)
                         </div>
                         <div class="card-body bg-light"><canvas id="productosVendidos" width="50" height="50"></canvas></div>
                     </div>
