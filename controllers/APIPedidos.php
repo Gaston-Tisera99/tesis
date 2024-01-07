@@ -9,7 +9,7 @@ class APIPedidos {
     public static function index() {
 
         
-        $db = mysqli_connect('localhost', 'root', '27deagosto', 'appmito');
+        $db = mysqli_connect($_ENV['DB_HOST'], $_ENV['DB_USER'], $_ENV['DB_PASS'], $_ENV['DB_NAME']);
 
             $sql = "CALL sp_ver_grafico_productos()";
             $result = mysqli_query($db, $sql);
@@ -29,7 +29,7 @@ class APIPedidos {
         }
 
         public static function grafico() {
-            $db = mysqli_connect('localhost', 'root', '27deagosto', 'appmito');
+            $db = mysqli_connect($_ENV['DB_HOST'], $_ENV['DB_USER'], $_ENV['DB_PASS'], $_ENV['DB_NAME']);
         
             if (isset($_POST['fecha1']) && isset($_POST['fecha2'])) {
                 $fecha1 = $_POST['fecha1'];

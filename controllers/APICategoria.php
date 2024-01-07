@@ -13,7 +13,7 @@ use mysqli_result;
                     $descripcion = $_POST['descripcion'];
                     $fecha = $_POST['fecha'];
                 if(empty ($_POST['idp'])){
-                    $db = mysqli_connect('localhost', 'root', '27deagosto', 'appmito');
+                    $db = mysqli_connect($_ENV['DB_HOST'], $_ENV['DB_USER'], $_ENV['DB_PASS'], $_ENV['DB_NAME']);
                     $sql = "CALL sp_crear_categoria('$nombre', '$descripcion', '$fecha')";
                     $result = mysqli_query($db, $sql);
                     if ($result) {
@@ -27,7 +27,7 @@ use mysqli_result;
                     mysqli_close($db);
                 }else{
                     $id = $_POST['idp'];
-                    $db = mysqli_connect('localhost', 'root', '27deagosto', 'appmito');
+                    $db = mysqli_connect($_ENV['DB_HOST'], $_ENV['DB_USER'], $_ENV['DB_PASS'], $_ENV['DB_NAME']);
                     $sql = "UPDATE categoria set nombre = '$nombre', descripcion = '$descripcion', datecreated = '$fecha' WHERE id = '$id'";
                     $result = mysqli_query($db, $sql);
                     if ($result) {
@@ -48,7 +48,7 @@ use mysqli_result;
         public static function listar(){
 
                 $categorias = Categoria::all();
-                $db = mysqli_connect('localhost', 'root', '27deagosto', 'appmito');
+                $db = mysqli_connect($_ENV['DB_HOST'], $_ENV['DB_USER'], $_ENV['DB_PASS'], $_ENV['DB_NAME']);
                 $sql = "SELECT * FROM categoria ORDER BY id ASC";
                 $resultado = mysqli_query($db, $sql);
                 
@@ -56,7 +56,7 @@ use mysqli_result;
                 $data = file_get_contents("php://input");
 
                 if($data != ""){
-                    $db = mysqli_connect('localhost', 'root', '27deagosto', 'appmito');
+                    $db = mysqli_connect($_ENV['DB_HOST'], $_ENV['DB_USER'], $_ENV['DB_PASS'], $_ENV['DB_NAME']);
                     $sql = ("SELECT * FROM categoria WHERE id LIKE '%".$data."%' OR nombre LIKE '%".$data."%' OR descripcion LIKE '%".$data."%'");
                     $resultado = mysqli_query($db, $sql);
                 }
@@ -77,7 +77,7 @@ use mysqli_result;
         public static function eliminar(){
            
             $id = file_get_contents("php://input");
-            $db = mysqli_connect('localhost', 'root', '27deagosto', 'appmito');
+            $db = mysqli_connect($_ENV['DB_HOST'], $_ENV['DB_USER'], $_ENV['DB_PASS'], $_ENV['DB_NAME']);
             $sql = "DELETE FROM categoria WHERE id = $id";
             $result = mysqli_query($db, $sql);
             if ($result) {
@@ -93,7 +93,7 @@ use mysqli_result;
 
         public static function editar(){
             $id = file_get_contents("php://input");
-            $db = mysqli_connect('localhost', 'root', '27deagosto', 'appmito');
+            $db = mysqli_connect($_ENV['DB_HOST'], $_ENV['DB_USER'], $_ENV['DB_PASS'], $_ENV['DB_NAME']);
             $sql = "SELECT * FROM categoria WHERE id = $id";
             $result = mysqli_query($db, $sql);
             $resultado = mysqli_fetch_assoc($result);
