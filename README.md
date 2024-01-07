@@ -1,0 +1,1 @@
+Este proyecto de tesis se centra en el desarrollo de un robusto sistema de control de stock y ventas diseñado específicamente para una distribuidora de productos de limpieza. La aplicación se ha implementado utilizando tecnologías clave como PHP, MySQL, jQuery y Bootstrap, y sigue el reconocido patrón de diseño Modelo Vista Controlador (MVC).
