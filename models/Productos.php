@@ -38,9 +38,9 @@ class Productos extends ActiveRecord {
         if(!$this->nombre){
             self::$alertas['error'][] = 'El nombre del producto es obligatorio';
         }   
-        if(!$this->descripcion){    
-            self::$alertas['error'][] = 'La descripcion del producto es obligatorio';
-        }   
+        // if(!$this->descripcion){    
+        //     self::$alertas['error'][] = 'La descripcion del producto es obligatorio';
+        // }   
         if(!$this->precio){
             self::$alertas['error'][] = 'El precio del producto es obligatorio';
         }   

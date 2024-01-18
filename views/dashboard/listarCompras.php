@@ -23,7 +23,7 @@
                             ?>
                             <tr>
                                 <td><?php echo $ver['id']; ?></td>
-                                <td>Proveedor</td>
+                                <td><?php echo $ver['razon_social']; ?></td>
                                 <td><?php echo $ver['fecha']; ?></td>
                                 <td><?php echo $ver['monto']; ?></td>
                                 <td style="text-align: center;">

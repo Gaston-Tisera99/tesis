@@ -289,7 +289,7 @@ class DashboardController {
 
     public static function listarCompras(Router $router){
         $db = conexion();
-        $sql = "SELECT id, fecha, monto FROM compra WHERE status = 2";
+        $sql = "SELECT c.id, p.razon_social ,c.fecha, c.monto FROM compra c INNER JOIN proveedores p ON c.proveedorId = p.id WHERE status = 2";
         $result = mysqli_query($db,$sql);
 
         $router->render2('dashboard/listarCompras',[

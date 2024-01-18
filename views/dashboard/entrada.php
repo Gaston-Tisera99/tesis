@@ -108,8 +108,8 @@
                                     <tr class="table-dark">
                                         <th>Id</th>
                                         <th>Producto</th>
-                                        <th>Cantidad</th>
                                         <th>Precio</th>
+                                        <th>Cantidad</th>
                                         <th>Total</th>
                                         <th>Accion</th>
                                     </tr>

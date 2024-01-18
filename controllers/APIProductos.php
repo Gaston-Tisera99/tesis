@@ -30,8 +30,8 @@ class APIProductos{
 
             $sql = "SELECT id, codigo, precio, nombre FROM producto WHERE codigo LIKE ? OR nombre LIKE ? ORDER BY codigo ASC";
             $stmt = mysqli_prepare($db, $sql); 
-
-            $campoParam = "%" . $campo . "%";
+            
+            $campoParam =  $campo . "%";
 
             mysqli_stmt_bind_param($stmt, "ss", $campoParam, $campoParam);
 

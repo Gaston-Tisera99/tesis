@@ -91,7 +91,7 @@ class APICompras{
     public static function confirmar(){
         $con = mysqli_connect("localhost", "root", "27deagosto", "appmito");
         
-        if(isset($_POST['id'])){
+        if(isset($_POST['id']) || ($_POST['action'] === 'confirmarVenta')){
             $id = $_POST['id'];
     
             $query = "UPDATE pedido SET STATUS = 2 WHERE idpedido = $id";
@@ -134,6 +134,8 @@ class APICompras{
                     echo "success";
                 } else {
                     echo "error";
+                    $query = "UPDATE pedido SET STATUS = 1 WHERE idpedido = $id";
+                    $resultado = mysqli_query($con, $query);
                 }
             } else {
                 // Error al actualizar el estado del pedido
