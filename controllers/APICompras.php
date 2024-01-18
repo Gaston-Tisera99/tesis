@@ -52,7 +52,7 @@ class APICompras{
             $proveedor = $_POST['proveedor'];
             
 
-            $con = mysqli_connect("localhost", "root", "27deagosto", "appmito");
+            $con = mysqli_connect($_ENV['DB_HOST'], $_ENV['DB_USER'], $_ENV['DB_PASS'], $_ENV['DB_NAME']);
 
             if (!$con) {
                 die("La conexión a la base de datos falló: " . mysqli_connect_error());
@@ -89,7 +89,7 @@ class APICompras{
     }
 
     public static function confirmar(){
-        $con = mysqli_connect("localhost", "root", "27deagosto", "appmito");
+        $con = mysqli_connect($_ENV['DB_HOST'], $_ENV['DB_USER'], $_ENV['DB_PASS'], $_ENV['DB_NAME']);
         
         if(isset($_POST['id']) || ($_POST['action'] === 'confirmarVenta')){
             $id = $_POST['id'];
@@ -147,7 +147,7 @@ class APICompras{
     }
 
     public static function confirmarCompra(){
-        $con = mysqli_connect("localhost", "root", "27deagosto", "appmito");
+        $con = mysqli_connect($_ENV['DB_HOST'], $_ENV['DB_USER'], $_ENV['DB_PASS'], $_ENV['DB_NAME']);
 
         if(isset($_POST)){
             $id = $_POST['id'];
@@ -183,7 +183,7 @@ class APICompras{
     }
 
     public static function eliminar(){
-        $con = mysqli_connect("localhost", "root", "27deagosto", "appmito");
+        $con = mysqli_connect($_ENV['DB_HOST'], $_ENV['DB_USER'], $_ENV['DB_PASS'], $_ENV['DB_NAME']);
         if(isset($_POST)){
             $id = $_POST['id']; 
             $query = "SELECT compraid, total FROM detalle_compra WHERE id = $id";
@@ -234,7 +234,7 @@ class APICompras{
     }
 
     public static function eliminarItem(){
-        $con = mysqli_connect("localhost", "root", "27deagosto", "appmito");
+        $con = mysqli_connect($_ENV['DB_HOST'], $_ENV['DB_USER'], $_ENV['DB_PASS'], $_ENV['DB_NAME']);
         if(isset($_POST)){
             $id = $_POST['id']; 
             $query = "SELECT pedidoid, total FROM detalle_pedido WHERE id = $id";
@@ -286,7 +286,7 @@ class APICompras{
 
 
     public static function editar(){
-        $con = mysqli_connect("localhost", "root", "27deagosto", "appmito");
+        $con = mysqli_connect($_ENV['DB_HOST'], $_ENV['DB_USER'], $_ENV['DB_PASS'], $_ENV['DB_NAME']);
     
         if (isset($_POST)) {
             $id = $_POST['id'];
@@ -321,7 +321,7 @@ class APICompras{
     }   
 
     public static function editarCantidad(){
-        $con = mysqli_connect("localhost", "root", "27deagosto", "appmito");
+        $con = mysqli_connect($_ENV['DB_HOST'], $_ENV['DB_USER'], $_ENV['DB_PASS'], $_ENV['DB_NAME']);
     
         if (isset($_POST)) {
             $id = $_POST['id'];
@@ -354,7 +354,7 @@ class APICompras{
     }
 
     public static function eliminarCompra(){
-        $con = mysqli_connect("localhost", "root", "27deagosto", "appmito");
+        $con = mysqli_connect($_ENV['DB_HOST'], $_ENV['DB_USER'], $_ENV['DB_PASS'], $_ENV['DB_NAME']);
         if($_POST['action'] == 'eliminarCompra'){
             $id = $_POST['id'];
             $sql = "DELETE FROM detalle_compra WHERE compraid = $id";
@@ -378,7 +378,7 @@ class APICompras{
     }
 
     public static function eliminarVenta(){
-        $con = mysqli_connect("localhost", "root", "27deagosto", "appmito");
+        $con = mysqli_connect($_ENV['DB_HOST'], $_ENV['DB_USER'], $_ENV['DB_PASS'], $_ENV['DB_NAME']);
         if($_POST['action'] == 'eliminarVenta'){
             $id = $_POST['id'];
             $sql = "DELETE FROM detalle_pedido WHERE pedidoid = $id";

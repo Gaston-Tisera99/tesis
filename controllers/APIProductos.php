@@ -23,7 +23,7 @@ class APIProductos{
     }
 
     public static function buscarProductos(){
-        $db = mysqli_connect('localhost', 'root', '27deagosto', 'appmito');
+        $db = mysqli_connect($_ENV['DB_HOST'], $_ENV['DB_USER'], $_ENV['DB_PASS'], $_ENV['DB_NAME']);
 
         if(isset($_POST)){
             $campo = $_POST['campo'];
@@ -53,7 +53,7 @@ class APIProductos{
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $codigo = $_POST['codigo'];
     
-            $con = mysqli_connect("localhost", "root", "27deagosto", "appmito");
+            $con = mysqli_connect($_ENV['DB_HOST'], $_ENV['DB_USER'], $_ENV['DB_PASS'], $_ENV['DB_NAME']);
         
             // Verificar la conexión
             if (!$con) {
